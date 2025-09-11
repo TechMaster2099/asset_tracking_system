@@ -1,3 +1,22 @@
 <?php
 
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin</title>
+</head>
+<body>
+    <h2>Admin dashboard</h2>
+
+    <a href="add_users.php">Add user</a>
+    <a href="delete_users.php">Delete user</a>
+
+    <a href="add_items.php">Add item</a>
+    <a href="delete_items.php">Delete item</a>
+
+    <a href="view_assets.php">View assets</a>
+</body>
+</html>
