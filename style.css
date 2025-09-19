@@ -53,3 +53,26 @@ button{
 button:hover {
     background-color: #0a9813;
 }
+
+h2{
+    color: #333;
+    text-align: center;
+    margin-top: 66px;
+   
+}
+
+.admin_links{
+    background-color: #0a9813;
+    width: 240px;
+    font-size: 35px;
+    text-align: center;
+    margin-left: 530px;
+    margin-top: 30px;
+    border-radius: 32px;
+}
+
+.admin_links a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 25px;
+}
