@@ -11,7 +11,7 @@
 </head>
 <body>
     <h2>Admin dashboard</h2>
-
+<div class="admin_links">
     <a href="add_users.php">Add user</a>
     <a href="delete_users.php">Delete user</a>
 
@@ -19,5 +19,6 @@
     <a href="delete_items.php">Delete item</a>
 
     <a href="view_assets.php">View assets</a>
+</div>    
 </body>
 </html>
