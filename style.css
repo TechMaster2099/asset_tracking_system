@@ -77,3 +77,19 @@ h2{
     font-size: 25px;
 }
 
+.staff_links{
+    background-color: #0ec11a;
+    width: 240px;
+    font-size: 35px;
+    text-align: center;
+    margin-left: 530px;
+    margin-top: 30px;
+    border-radius: 32px;
+}
+
+.staff_links a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 25px;
+}
+
