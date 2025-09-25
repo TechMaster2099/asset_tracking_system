@@ -8,6 +8,27 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     $password=$_POST['password'];
 
     $hash=password_hash($password,PASSWORD_DEFAULT);
+     
+   $stmt2 = $conn->prepare("SELECT * FROM users WHERE username = ? AND email=? AND role=?");
+
+   if ($stmt2 === false) {
+    die("Preparation failed: " . $conn->error);
+}
+
+   $stmt2->bind_param("sss", $username, $email, $role);
+
+   $stmt2->execute();
+
+   $result2 = $stmt2->get_result();
+
+
+
+
+    if ($result2->num_rows > 0) {
+    die("User already exists. Process terminated.");
+    }
+
+    
 
     $stmt=$conn->prepare("INSERT INTO users(username, password_hash, email, role) VALUES (?, ?, ?, ?)");
 
@@ -18,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     $stmt->bind_param("ssss", $username, $hash, $email, $role);
 
     if ($stmt->execute() ) {
-        echo 'user added successfully';
+        header("Location: add_users.php");
     } else {
         echo "Error: " . $stmt->error;
     }

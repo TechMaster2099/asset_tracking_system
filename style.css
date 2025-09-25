@@ -93,3 +93,33 @@ h2{
     font-size: 25px;
 }
 
+table{
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 24px;
+  background-color: #fff;
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+table th,
+table td{
+    padding: 16px;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-size: 16px;
+}
+
+table th {
+  background-color: #0ec11a;
+  color: #fff;
+}
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#delete-button{
+  color:  #0ec11a; 
+  text-decoration: none; 
+  font-weight: bold;
+}
