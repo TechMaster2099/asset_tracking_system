@@ -61,6 +61,19 @@ h2{
    
 }
 
+h3{
+    color: #333;
+    text-align: center;
+    margin-top: 66px;
+}
+
+#chairs_availabe{
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
 .admin_links{
     background-color: #0ec11a;
     width: 240px;
