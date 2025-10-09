@@ -2,7 +2,7 @@
 include "connect.php";
 $item_result = null; // initialize
 
-if ($_SERVER["REQUEST_METHOD"] == 'POST') {
+if ($_SERVER["REQUEST_METHOD"] == 'POST' && isset($_POST['item'])) {
     $item = $_POST['item'];
 
     $stmt = $conn->prepare('SELECT * FROM items WHERE name = ?');
@@ -20,6 +20,29 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST' && isset($_POST['borrower'])) {
     $id_number = intval($_POST['id_number'] ?? 0);
     $item_name = trim($_POST['item_name'] ?? '');
     $quantity  = intval($_POST['quantity'] ?? 0);
+
+
+    $sql_1="SELECT * FROM borrower  
+            WHERE name = ?
+            AND phone = ?
+            AND email = ? 
+            AND id_number = ? 
+            AND item = ? 
+            AND quantity = ?  ";
+    
+    $stmt_1 = $conn->prepare($sql_1);
+    if ($stmt_1 === false) { die("Preparation failed: " . $conn->error); }
+    $stmt_1->bind_param("sssisi", $borrower, $phone, $email, $id_number, $item_name, $quantity);
+    
+    $stmt_1->execute();
+
+    $result_1 = $stmt_1->get_result();
+
+    if ($result_1->num_rows > 0) {
+    die("Loan already exists. Process terminated.");
+    }
+
+
 
     // insert borrower: use correct types (name, phone, email = strings; id_number = int)
     $stmt = $conn->prepare("INSERT INTO borrower(name, phone, email, id_number, item, quantity) VALUES (?, ?, ?, ?, ?, ?)");

@@ -74,6 +74,13 @@ h3{
     font-size: 20px;
 }
 
+#borrower_availabe{
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
 .admin_links{
     background-color: #0ec11a;
     width: 240px;

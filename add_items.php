@@ -4,6 +4,7 @@ include 'connect.php';
 if ($_SERVER["REQUEST_METHOD"] == 'POST'){
  $name=$_POST['name'];
  $quantity=$_POST['quantity'];
+ $original=$quantity;
  $note=$_POST['note'];
 
  $stmt= $conn->prepare("SELECT * FROM ITEMS WHERE name=?");
@@ -21,13 +22,13 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST'){
     die("Item already exists. Process terminated.");
     }
 
- $stmt2=$conn->prepare("INSERT INTO items(name, total_quantity, notes) VALUES (?, ?, ?)");
+ $stmt2=$conn->prepare("INSERT INTO items(name, total_quantity, original, notes) VALUES (?, ?, ?, ?)");
   
  if ($stmt2 === false) {
         die("Preparation failed: " . $conn->error);
     }
 
-    $stmt2->bind_param("sis", $name, $quantity, $note);
+    $stmt2->bind_param("siis", $name, $quantity, $original, $note);
     
     if ($stmt2->execute() ) {
         header("Location: add_items.php");
