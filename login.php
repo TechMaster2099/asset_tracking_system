@@ -1,4 +1,8 @@
 <?php
+header("Cache-Control: no-cache, must-revalidate, no-store, max-age=0");
+header("Pragma: no-cache");
+header("Expires: 0");
+
 include 'connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {

@@ -21,7 +21,7 @@
 </div>   
     <br><br>
 <div class="staff_links">
-    <a href="view_assets.php">View assets</a>
+    <a href="view_records.php">View assets</a>
 </div>   
 </body>
 </html>

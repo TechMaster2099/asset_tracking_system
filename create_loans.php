@@ -1,4 +1,9 @@
 <?php
+
+header("Cache-Control: no-cache, must-revalidate, no-store, max-age=0");
+header("Pragma: no-cache");
+header("Expires: 0");
+
 include "connect.php";
 $item_result = null; // initialize
 
@@ -44,15 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST' && isset($_POST['borrower'])) {
 
 
 
-    // insert borrower: use correct types (name, phone, email = strings; id_number = int)
-    $stmt = $conn->prepare("INSERT INTO borrower(name, phone, email, id_number, item, quantity) VALUES (?, ?, ?, ?, ?, ?)");
-    if ($stmt === false) { die("Preparation failed: " . $conn->error); }
-    $stmt->bind_param("sssisi", $borrower, $phone, $email, $id_number, $item_name, $quantity );
-
-    if (! $stmt->execute()) {
-        die("Insert failed: " . $stmt->error);
-    }
-    $stmt->close();
+    
 
     // get item row
     $sql = "SELECT total_quantity FROM items WHERE name = ?";
@@ -67,6 +64,15 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST' && isset($_POST['borrower'])) {
     if (!$result_arr) {
         die("Item not found.");
     }
+
+    $stmt = $conn->prepare("INSERT INTO borrower(name, phone, email, id_number, item, quantity) VALUES (?, ?, ?, ?, ?, ?)");
+    if ($stmt === false) { die("Preparation failed: " . $conn->error); }
+    $stmt->bind_param("sssisi", $borrower, $phone, $email, $id_number, $item_name, $quantity );
+
+    if (! $stmt->execute()) {
+        die("Insert failed: " . $stmt->error);
+    }
+    $stmt->close();
 
     $original_quantity = intval($result_arr['total_quantity']);
     if ($quantity <= 0) {
@@ -111,9 +117,9 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST' && isset($_POST['borrower'])) {
     </form>
 
     <?php if ($item_result !== null): ?>
-        <p id="chairs_availabe">Chairs available are <?php echo htmlspecialchars($item_result['total_quantity']); ?></p>
+        <p id="items_available">Item available are <?php echo htmlspecialchars($item_result['total_quantity']); ?></p>
     <?php elseif ($_SERVER["REQUEST_METHOD"] == 'POST'): ?>
-        <p id="chairs_availabe">No item found with that name.</p>
+        <p id="items_available">No item found with that name.</p>
     <?php endif; ?>
 
     <h3>Loan Item</h3>

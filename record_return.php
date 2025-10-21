@@ -1,4 +1,9 @@
 <?php
+
+header("Cache-Control: no-cache, must-revalidate, no-store, max-age=0");
+header("Pragma: no-cache");
+header("Expires: 0");
+
 include 'connect.php';
 $result=null;
 
@@ -63,6 +68,7 @@ if ($_SERVER["REQUEST_METHOD"]=='POST' && isset($_POST['item'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
+    
 </head>
 <body>
     <h2>Record return</h2>
