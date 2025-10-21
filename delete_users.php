@@ -24,7 +24,7 @@ $result=$conn->query($sql);
             <th></th>
             <th>Username</th>
             <th>Email</th>
-            <th>Delete</th>
+            <th>Action</th>
         </tr>
         <?php
           $counter = 1; 
@@ -32,10 +32,10 @@ $result=$conn->query($sql);
         ?>
 
         <tr>
-            <td><?php echo $counter++; ?></td>
-            <td><?php echo $row['username'];?></td>
-            <td><?php echo $row['email'];?></td>
-            <td>
+            <td data-label=""><?php echo $counter++; ?></td>
+            <td data-label="Username"><?php echo $row['username'];?></td>
+            <td data-label="Email"><?php echo $row['email'];?></td>
+            <td data-label="Action">
                 <a id="delete-button" href="delete.php?id=<?php echo $row['user_id']; ?>">Delete</a>
             </td>
         </tr>

@@ -143,3 +143,66 @@ table tr:nth-child(even) {
   text-decoration: none; 
   font-weight: bold;
 }
+
+
+@media (max-width: 600px){
+
+    form{
+        margin-left: 10px;
+        width: calc(100% - 20%);
+
+    }
+
+    .admin_links,
+    .staff_links {
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;     /* make these fluid */
+        font-size: 22px;
+    }
+
+    table,th, td, tr{
+    display: block;
+   }
+
+   th{
+    display: none;
+   }
+
+   tr{
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    padding: 10px;
+   }
+
+    td {
+    position: relative;
+    padding-left: 50px;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+   }
+
+     td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    margin-right: 30px;
+    color: #088310;
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  td:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+  }
+
+  #delete-button{
+  color:  #0ec11a; 
+  text-decoration: none; 
+  font-weight: bold;
+}
+
+}

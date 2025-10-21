@@ -58,13 +58,13 @@ $result=$conn->query($sql);
             ?>
 
             <tr>
-                <td><?php echo $counter++; ?></td>
-                <td><?php echo $row['name'];?></td>
-                <td><?php echo $row['original'];?></td>
-                <td><?php echo $row['total_quantity'];?></td>
-                <td><?php echo $row['original']-$row['total_quantity'];?></td>
-                <td><?php echo $row['notes'];?></td>
-                <td><?php echo $row['created_at'];?></td>
+                <td data-label=""><?php echo $counter++; ?></td>
+                <td data-label="Name"><?php echo $row['name'];?></td>
+                <td data-label="Original Quantity"><?php echo $row['original'];?></td>
+                <td data-label="Current Quantity"><?php echo $row['total_quantity'];?></td>
+                <td data-label="Lent Quantity"><?php echo $row['original']-$row['total_quantity'];?></td>
+                <td data-label="Notes"><?php echo $row['notes'];?></td>
+                <td data-label="Date added"><?php echo $row['created_at'];?></td>
             </tr>
 
             <?php endwhile; ?>
